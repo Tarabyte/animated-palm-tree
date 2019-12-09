@@ -11,4 +11,4 @@ before_install:
   - docker build -t tarabyte/animated-palm-tree -f Dev.Dockerfile .
 
 script:
-  - docker run tarabyte/animated-palm-tree CI=true yarn test
+  - docker run -e CI=true tarabyte/animated-palm-tree yarn test
