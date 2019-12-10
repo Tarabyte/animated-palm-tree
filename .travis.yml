@@ -12,3 +12,17 @@ before_install:
 
 script:
   - docker run -e CI=true tarabyte/animated-palm-tree yarn test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "animated-palm-tree"
+  env: "AnimatedPalmTree-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-073782313667"
+  bucket_path: "animated-palm-tree"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  # secret_access_key:
+  #   secure: "$AWS_SECRET_KEY"
